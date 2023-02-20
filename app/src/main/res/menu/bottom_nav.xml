@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="История"
+        android:id="@+id/history"
+        android:icon="@drawable/ic_history"/>
+    <item android:title="Скан"
+        android:id="@+id/scan"
+        android:icon="@drawable/ic_qr_code"/>
+    <item android:title="Избранное"
+        android:id="@+id/mark"
+        android:icon="@drawable/ic_star"/>
+    <item android:title="Настройки"
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_settings"/>
+</menu>

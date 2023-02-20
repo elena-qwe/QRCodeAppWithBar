@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">QRCodeApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="custom_row_id">1</string>
+    <string name="custom_row_firstname">Ivan</string>
+    <string name="custom_row_department">Energy</string>
+    <string name="department_txt">department:</string>
+    <string name="custom_row_lastname">Ivanov</string>
+    <string name="text_firstname_add">Введите имя</string>
+    <string name="text_lastname_add">Введите фамилию</string>
+    <string name="text_department_add">Введите отдел</string>
+    <string name="text_email_add">Введите почту</string>
+    <string name="text_password_add">Введите пароль</string>
+    <string name="btn_text_add_user">Добавить пользователя</string>
+    <string name="update_data_user_btn">Обновить данные пользователя</string>
+</resources>
