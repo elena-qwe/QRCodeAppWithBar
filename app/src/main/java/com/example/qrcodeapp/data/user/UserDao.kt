@@ -22,6 +22,6 @@ interface UserDao {
     @Query("SELECT * FROM user_table ORDER BY id ASC")
     fun readAllData(): LiveData<List<User>>
 
-
-
+    @Query("SELECT * FROM user_table WHERE email = :email AND password = :password")
+    fun getUser(email: String, password: String): User?
 }
