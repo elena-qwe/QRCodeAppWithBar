@@ -7,18 +7,19 @@
     tools:context=".fragments.update.UpdateFragment">
 
     <TextView
-        android:text="Обновить данные аккаунта"
+        android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="35dp"
+        android:text="Обновить данные аккаунта"
         android:textColor="@color/two_blue"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -122,17 +123,43 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
+    <RadioGroup
+        android:id="@+id/radioGroupRoles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/update_password_et">
+
+        <RadioButton
+            android:id="@+id/radioButtonAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Администратор" />
+
+        <RadioButton
+            android:id="@+id/radioButtonEmployee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Сотрудник" />
+
+    </RadioGroup>
+
+
     <Button
         android:id="@+id/update_add_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:backgroundTint="@color/two_blue"
         android:focusable="true"
         android:text="@string/update_data_user_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_password_et" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupRoles" />
 </androidx.constraintlayout.widget.ConstraintLayout>

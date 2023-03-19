@@ -1,23 +1,21 @@
-package com.example.qrcodeapp.data.code
+package com.example.qrcodeapp.repository.data.user
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.qrcodeapp.data.user.UserDao
-import com.example.qrcodeapp.model.Code
 import com.example.qrcodeapp.model.User
 
-@Database(entities = [Code::class], version = 1, exportSchema = false)
-abstract class CodeDatabase: RoomDatabase() {
+@Database(entities = [User::class], version = 1, exportSchema = false)
+abstract class UserDatabase: RoomDatabase() {
 
-    abstract fun codeDao(): CodeDao
+    abstract fun userDao(): UserDao
 
     companion object {
         @Volatile
-        private var INSTANCE: CodeDatabase? = null
+        private var INSTANCE: UserDatabase? = null
 
-        fun getDatabase(context: Context): CodeDatabase {
+        fun getDatabase(context: Context): UserDatabase {
             val tempInstance = INSTANCE
             if(tempInstance != null) {
                 return tempInstance
@@ -25,8 +23,8 @@ abstract class CodeDatabase: RoomDatabase() {
             synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    CodeDatabase::class.java,
-                    "code_database"
+                    UserDatabase::class.java,
+                    "user_database"
                 ).build()
                 INSTANCE = instance
                 return instance

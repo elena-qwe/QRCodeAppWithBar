@@ -14,4 +14,6 @@
         android:layout_gravity="center"
         android:text="Settings Fragment" />
 
+
+
 </FrameLayout>

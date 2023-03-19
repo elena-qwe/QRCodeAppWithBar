@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.qrcodeapp.R
 import com.example.qrcodeapp.model.User
 import com.example.qrcodeapp.viewmodel.UserViewModel
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_add.view.*
 
@@ -36,42 +37,48 @@ class AddFragment : Fragment() {
     }
 
     private fun insertDataToDatabase() {
-        val firstname = firstname_et.editText?.text.toString()
+        /*val firstname = firstname_et.editText?.text.toString()
         val lastname = lastname_et.editText?.text.toString()
-        val department = department_et.editText?.text.toString()
+        val department = department_et.editText?.text.toString()*/
         val email = login_et.editText?.text.toString()
         val password = password_et.editText?.text.toString()
-
-
-        if (inputCheck(firstname, lastname, department, email, password)) {
-            //create user object
-            val user = User(0, firstname, lastname, department, email, password)
-            //add data to database
-            mUserViewModel.addUser(user)
-            Toast.makeText(
-                requireContext(),
-                "Пользователь успешно зарегестрирован",
-                Toast.LENGTH_LONG
-            ).show()
-            //navigate back
-            findNavController().navigate(R.id.action_addFragment_to_listFragment)
-        } else {
-            Toast.makeText(
-                requireContext(), "Пожалуйста заполните все поля", Toast.LENGTH_LONG
-            ).show()
+        val roleId = when (roleRadioGroup.checkedRadioButtonId) {
+            R.id.adminRadioButton -> 1
+            R.id.employeeRadioButton -> 2
+            else -> 0
         }
+
+
+        if (inputCheck(/*firstname, lastname, department,*/ email, password, roleId.toString())) {
+                //create user object
+                val user = User(0, /*firstname, lastname, department,*/ email, password, roleId.toString())
+                //add data to database
+                mUserViewModel.addUser(user)
+                Toast.makeText(
+                    requireContext(),
+                    "Пользователь успешно зарегестрирован",
+                    Toast.LENGTH_LONG
+                ).show()
+                //navigate back
+                findNavController().navigate(R.id.action_addFragment_to_listFragment)
+            } else {
+                Toast.makeText(
+                    requireContext(), "Пожалуйста заполните все поля", Toast.LENGTH_LONG
+                ).show()
+            }
     }
 
     private fun inputCheck(
-        firstname: String,
+        /*firstname: String,
         lastname: String,
-        department: String,
+        department: String,*/
         email: String,
-        password: String
+        password: String,
+        role_id: String
     ): Boolean {
-        return !(TextUtils.isEmpty(firstname) || TextUtils.isEmpty(lastname) || TextUtils.isEmpty(
+        return !(/*TextUtils.isEmpty(firstname) || TextUtils.isEmpty(lastname) || TextUtils.isEmpty(
             department
-        ) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password))
+        ) ||*/ TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(role_id.toString()))
     }
 
 

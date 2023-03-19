@@ -31,10 +31,10 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = userList[position]
-        holder.itemView.id_txt.text = currentItem.id.toString()
+        holder.itemView.id_txt.text = currentItem.id.toString()/*
         holder.itemView.firstname_txt.text = currentItem.firstName
         holder.itemView.lastname_txt.text = currentItem.lastName
-        holder.itemView.department_txt.text = currentItem.department
+        holder.itemView.department_txt.text = currentItem.department*/
 
         holder.itemView.rowLayout.setOnClickListener {
             val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)

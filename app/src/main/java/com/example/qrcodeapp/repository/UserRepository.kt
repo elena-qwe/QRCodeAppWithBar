@@ -1,10 +1,11 @@
 package com.example.qrcodeapp.repository
 
 import androidx.lifecycle.LiveData
-import com.example.qrcodeapp.data.user.UserDao
+import com.example.qrcodeapp.repository.data.user.UserDao
 import com.example.qrcodeapp.model.User
 
 class UserRepository(private val userDao: UserDao) {
+
     val readAllData: LiveData<List<User>> = userDao.readAllData()
 
     suspend fun addUser(user: User) {
@@ -23,5 +24,20 @@ class UserRepository(private val userDao: UserDao) {
         userDao.deleteAllUsers()
     }
 
+    suspend fun insertUser(user: User) {
+        userDao.insertUser(user)
+    }
+
+    suspend fun getUser(email: String, role: String): User? {
+        return userDao.getUser(email, role)
+    }
+
+    /*fun getUserByEmailAndPasswordAndRoleId(email: String, password: String, role_id: Int): User? {
+        return userDao.getUserByEmailAndPasswordAndRoleId(email, password, role_id)
+    }
+
+    fun insertUser(user: User) {
+        userDao.insertUser(user)
+    }*/
 
 }

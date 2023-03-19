@@ -1,4 +1,4 @@
-package com.example.qrcodeapp.data.code
+package com.example.qrcodeapp.repository.data.code
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

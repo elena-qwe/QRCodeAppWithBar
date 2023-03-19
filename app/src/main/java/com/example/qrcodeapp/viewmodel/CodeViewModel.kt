@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.qrcodeapp.data.code.CodeDatabase
+import com.example.qrcodeapp.repository.data.code.CodeDatabase
 import com.example.qrcodeapp.model.Code
 import com.example.qrcodeapp.repository.CodeRepository
 import kotlinx.coroutines.Dispatchers

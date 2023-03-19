@@ -1,7 +1,7 @@
 package com.example.qrcodeapp.repository
 
 import androidx.lifecycle.LiveData
-import com.example.qrcodeapp.data.code.CodeDao
+import com.example.qrcodeapp.repository.data.code.CodeDao
 import com.example.qrcodeapp.model.Code
 
 class CodeRepository (private val codeDao: CodeDao) {

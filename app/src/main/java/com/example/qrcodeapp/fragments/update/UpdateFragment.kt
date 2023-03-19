@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.qrcodeapp.R
 import com.example.qrcodeapp.model.User
 import com.example.qrcodeapp.viewmodel.UserViewModel
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_update.*
 import kotlinx.android.synthetic.main.fragment_update.view.*
 
@@ -30,11 +31,13 @@ class UpdateFragment : Fragment() {
 
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        view.update_firstname_et.editText?.setText(args.currentUser.firstName)
+        /*view.update_firstname_et.editText?.setText(args.currentUser.firstName)
         view.update_lastname_et.editText?.setText(args.currentUser.lastName)
-        view.update_department_et.editText?.setText(args.currentUser.department)
+        view.update_department_et.editText?.setText(args.currentUser.department)*/
         view.update_login_et.editText?.setText(args.currentUser.email)
         view.update_password_et.editText?.setText(args.currentUser.password)
+        view.radioGroupRoles.checkedRadioButtonId.toString()
+        //view.radioGroupRoles.radioGroupRoles.checkedRadioButtonId
 
         view.update_add_btn.setOnClickListener {
             updateItem()
@@ -48,17 +51,22 @@ class UpdateFragment : Fragment() {
 
     private fun updateItem() {
 
-        val firstname = update_firstname_et.editText?.text.toString()
+       /* val firstname = update_firstname_et.editText?.text.toString()
         val lastname = update_lastname_et.editText?.text.toString()
-        val department = update_department_et.editText?.text.toString()
+        val department = update_department_et.editText?.text.toString()*/
         val email = update_login_et.editText?.text.toString()
         val password = update_password_et.editText?.text.toString()
+        val roleId = when (roleRadioGroup.checkedRadioButtonId) {
+            R.id.adminRadioButton -> 1
+            R.id.employeeRadioButton -> 2
+            else -> 0
+        }
 
-        if (inputCheck(firstname, lastname, department, email, password)) {
+        if (inputCheck(/*firstname, lastname, department,*/ email, password, roleId.toString())) {
 
             //create user object
             val updatedUser =
-                User(args.currentUser.id, firstname, lastname, department, email, password)
+                User(args.currentUser.id, /*firstname, lastname, department,*/ email, password, roleId.toString())
             //update current user
             mUserViewModel.updateUser(updatedUser)
             Toast.makeText(
@@ -74,15 +82,16 @@ class UpdateFragment : Fragment() {
     }
 
     private fun inputCheck(
-        firstname: String,
+       /* firstname: String,
         lastname: String,
-        department: String,
+        department: String,*/
         email: String,
-        password: String
+        password: String,
+        role_id: String
     ): Boolean {
-        return !(TextUtils.isEmpty(firstname) || TextUtils.isEmpty(lastname) || TextUtils.isEmpty(
+        return !(/*TextUtils.isEmpty(firstname) || TextUtils.isEmpty(lastname) || TextUtils.isEmpty(
             department
-        ) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password))
+        ) ||*/ TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(role_id.toString()))
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -102,15 +111,15 @@ class UpdateFragment : Fragment() {
             mUserViewModel.deleteUser(args.currentUser)
             Toast.makeText(
                 requireContext(),
-                "Успешно удалено: ${args.currentUser.firstName}",
+                "Успешно удалено:", // ${args.currentUser.firstName}
                 Toast.LENGTH_LONG
             ).show()
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         }
 
         builder.setNegativeButton("Нет") { _, _ -> }
-        builder.setTitle("Удалить ${args.currentUser.firstName}?")
-        builder.setMessage("Вы уверены, что хотите удалить ${args.currentUser.firstName}?")
+        builder.setTitle("Удалить ?") //${args.currentUser.firstName}
+        builder.setMessage("Вы уверены, что хотите удалить ?") //${args.currentUser.firstName}
         builder.create().show()
     }
 
