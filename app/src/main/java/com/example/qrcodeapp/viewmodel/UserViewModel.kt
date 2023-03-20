@@ -57,6 +57,13 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         repository.insertUser(user)
     }
 
+    fun findByEmailAndPasswordAndRole(email: String, password: String, role: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.findByEmailAndPasswordAndRole(email, password, role)
+        }
+    }
+
+
 
 }
 

@@ -56,17 +56,17 @@ class UpdateFragment : Fragment() {
         val department = update_department_et.editText?.text.toString()*/
         val email = update_login_et.editText?.text.toString()
         val password = update_password_et.editText?.text.toString()
-        val roleId = when (roleRadioGroup.checkedRadioButtonId) {
-            R.id.adminRadioButton -> 1
-            R.id.employeeRadioButton -> 2
+        val role = when (roleRadioGroup.checkedRadioButtonId) {
+            R.id.adminRadioButton -> "admin"
+            R.id.employeeRadioButton -> "user"
             else -> 0
         }
 
-        if (inputCheck(/*firstname, lastname, department,*/ email, password, roleId.toString())) {
+        if (inputCheck(/*firstname, lastname, department,*/ email, password, role.toString())) {
 
             //create user object
             val updatedUser =
-                User(args.currentUser.id, /*firstname, lastname, department,*/ email, password, roleId.toString())
+                User(args.currentUser.id, /*firstname, lastname, department,*/ email, password, role.toString())
             //update current user
             mUserViewModel.updateUser(updatedUser)
             Toast.makeText(
@@ -87,11 +87,11 @@ class UpdateFragment : Fragment() {
         department: String,*/
         email: String,
         password: String,
-        role_id: String
+        role: String
     ): Boolean {
         return !(/*TextUtils.isEmpty(firstname) || TextUtils.isEmpty(lastname) || TextUtils.isEmpty(
             department
-        ) ||*/ TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(role_id.toString()))
+        ) ||*/ TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(role))
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

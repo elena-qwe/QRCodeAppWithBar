@@ -2,17 +2,19 @@ package com.example.qrcodeapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.qrcodeapp.databinding.ActivityLoginBinding
 import com.example.qrcodeapp.viewmodel.UserViewModel
-
+import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginActivity : AppCompatActivity() {
 
+
+    private lateinit var mUserViewModel: UserViewModel
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var viewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +22,12 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+
+        /*db = Room.databaseBuilder(
+            applicationContext,
+            UserDatabase::class.java, "user_database"
+        ).build()*/
 
         binding.registerButton.setOnClickListener {
             val intent = Intent(this, RegistrationActivity::class.java)
@@ -29,25 +36,32 @@ class LoginActivity : AppCompatActivity() {
 
         binding.loginButton.setOnClickListener {
 
-        }
+            val email = binding.emailEditText.text.toString()
+            val password = binding.passwordEditText.text.toString()
+            val role = when (binding.roleRadioGroup.checkedRadioButtonId) {
+                R.id.adminRadioButton -> "admin"
+                R.id.employeeRadioButton -> "user"
+                else -> null
+            }
 
-    }
-   /* private fun getSelectedRole(): String {
-        return when (binding.roleRadioGroup.checkedRadioButtonId) {
-            R.id.adminRadioButton -> "admin"
-            R.id.employeeRadioButton -> "user"
-            else -> ""
+            if (role != null) {
+                val user = mUserViewModel.findByEmailAndPasswordAndRole(email, password, role)
+                if (user != null) {
+                    when (role) {
+                        "admin" -> startActivity(Intent(this, AdminActivity::class.java))
+                        "user" -> startActivity(Intent(this, HomeActivity::class.java))
+                    }
+                } else {
+                    Toast.makeText(this, "Неправильно введена почта, пароль или роль", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            } else {
+                Toast.makeText(this, "Выберите пожалуйста роль", Toast.LENGTH_SHORT).show()
+            }
         }
     }
-
-    private fun getWelcomeActivityByRole(role: String): Class<out AppCompatActivity> {
-        return when (role) {
-            "admin" -> AdminActivity::class.java
-            "user" -> HomeActivity::class.java
-            else -> throw IllegalArgumentException("Invalid role")
-        }
-    }*/
 }
+
 
 
 

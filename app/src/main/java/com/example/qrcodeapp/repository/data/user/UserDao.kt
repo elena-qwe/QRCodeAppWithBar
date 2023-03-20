@@ -3,7 +3,6 @@ package com.example.qrcodeapp.repository.data.user
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.qrcodeapp.model.User
-import org.jetbrains.annotations.NotNull
 
 @Dao
 interface UserDao {
@@ -29,7 +28,6 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE email = :email AND role = :role")
     suspend fun getUser(email: String, role: String): User?
 
-    @Query("SELECT * FROM users WHERE email = :email")
-    suspend fun getUserByEmail(email: String): User?
-
+    @Query("SELECT * FROM users WHERE email = :email AND password = :password AND role = :role")
+    fun findByEmailAndPasswordAndRole(email: String, password: String, role: String): User?
 }

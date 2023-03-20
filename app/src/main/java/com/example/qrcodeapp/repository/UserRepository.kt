@@ -32,12 +32,11 @@ class UserRepository(private val userDao: UserDao) {
         return userDao.getUser(email, role)
     }
 
-    /*fun getUserByEmailAndPasswordAndRoleId(email: String, password: String, role_id: Int): User? {
-        return userDao.getUserByEmailAndPasswordAndRoleId(email, password, role_id)
+    suspend fun findByEmailAndPasswordAndRole(email: String, password: String, role: String): User? {
+        return userDao.findByEmailAndPasswordAndRole(email, password, role)
     }
 
-    fun insertUser(user: User) {
-        userDao.insertUser(user)
-    }*/
+
+
 
 }

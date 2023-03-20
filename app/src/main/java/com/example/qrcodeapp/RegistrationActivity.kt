@@ -61,7 +61,7 @@ class RegistrationActivity : AppCompatActivity() {
         return when (role) {
             "admin" -> AdminActivity::class.java
             "user" -> HomeActivity::class.java
-            else -> throw IllegalArgumentException("Ошибка роли")
+            else -> throw IllegalArgumentException("Ошибка с выбором роли")
         }
     }
 }

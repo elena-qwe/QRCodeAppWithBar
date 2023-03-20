@@ -42,16 +42,16 @@ class AddFragment : Fragment() {
         val department = department_et.editText?.text.toString()*/
         val email = login_et.editText?.text.toString()
         val password = password_et.editText?.text.toString()
-        val roleId = when (roleRadioGroup.checkedRadioButtonId) {
-            R.id.adminRadioButton -> 1
-            R.id.employeeRadioButton -> 2
+        val role = when (roleRadioGroup.checkedRadioButtonId) {
+            R.id.adminRadioButton -> "admin"
+            R.id.employeeRadioButton -> "user"
             else -> 0
         }
 
 
-        if (inputCheck(/*firstname, lastname, department,*/ email, password, roleId.toString())) {
+        if (inputCheck(/*firstname, lastname, department,*/ email, password, role.toString())) {
                 //create user object
-                val user = User(0, /*firstname, lastname, department,*/ email, password, roleId.toString())
+                val user = User(0, /*firstname, lastname, department,*/ email, password, role.toString())
                 //add data to database
                 mUserViewModel.addUser(user)
                 Toast.makeText(
