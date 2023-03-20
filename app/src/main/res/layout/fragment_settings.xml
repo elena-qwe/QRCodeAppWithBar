@@ -3,17 +3,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/three_blue"
+    android:layout_marginStart="35dp"
+    android:layout_marginEnd="35dp"
+    android:layout_marginBottom="25dp"
     tools:context=".fragments.settings.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:layout_gravity="center"
-        android:text="Settings Fragment" />
 
+
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/Widget.AppCompat.TextView.SpinnerItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Настройки приложения"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Выберете тему приложения"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/dark_theme_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Темная тема"
+                android:textSize="15sp" />
+
+            <RadioButton
+                android:id="@+id/light_theme_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Светлая тема"
+                android:textSize="15sp" />
+
+
+        </RadioGroup>
+
+
+    </LinearLayout>
 
 
 </FrameLayout>

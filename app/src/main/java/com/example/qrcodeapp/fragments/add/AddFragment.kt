@@ -74,11 +74,11 @@ class AddFragment : Fragment() {
         department: String,*/
         email: String,
         password: String,
-        role_id: String
+        role: String
     ): Boolean {
         return !(/*TextUtils.isEmpty(firstname) || TextUtils.isEmpty(lastname) || TextUtils.isEmpty(
             department
-        ) ||*/ TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(role_id.toString()))
+        ) ||*/ TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(role))
     }
 
 
