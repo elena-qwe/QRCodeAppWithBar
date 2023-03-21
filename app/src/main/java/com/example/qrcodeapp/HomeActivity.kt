@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.qrcodeapp.databinding.ActivityHomeBinding
-import com.example.qrcodeapp.fragments.history.HistoryFragment
+import com.example.qrcodeapp.fragments.history.ScanHistoryFragment
 import com.example.qrcodeapp.fragments.mark.MarkFragment
 import com.example.qrcodeapp.fragments.scan.ScanFragment
 import com.example.qrcodeapp.fragments.settings.SettingsFragment
@@ -24,7 +24,7 @@ class HomeActivity : AppCompatActivity() {
                 R.id.scan -> replaceFragment(ScanFragment())
                 R.id.settings -> replaceFragment(SettingsFragment())
                 R.id.mark -> replaceFragment(MarkFragment())
-                R.id.history -> replaceFragment(HistoryFragment())
+                R.id.history -> replaceFragment(ScanHistoryFragment())
                 else -> {
 
                 }

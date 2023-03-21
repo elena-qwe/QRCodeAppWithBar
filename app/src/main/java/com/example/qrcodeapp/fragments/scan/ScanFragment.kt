@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.qrcodeapp.R
+import com.example.qrcodeapp.model.Scan
 import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.ScanOptions
 import kotlinx.android.synthetic.main.fragment_scan.view.*
@@ -25,15 +26,29 @@ class ScanFragment : Fragment() {
 
         view.button_scan.setOnClickListener {
 
-            val integrator = IntentIntegrator.forSupportFragment(this@ScanFragment)
+            val integrator = IntentIntegrator.forSupportFragment(this)
+            integrator.setDesiredBarcodeFormats(IntentIntegrator.PRODUCT_CODE_TYPES)
+            integrator.setPrompt("Scan a barcode")
+            integrator.setCameraId(0)  // use a specific camera of the device
+            integrator.setBeepEnabled(false)
+            integrator.setOrientationLocked(false)
+            integrator.initiateScan()
+
+
+
+            /*val integrator = IntentIntegrator.forSupportFragment(this@ScanFragment)
 
             integrator.setOrientationLocked(false)
-            integrator.setPrompt("Scan QR code")
+            integrator.setPrompt("Scan a barcode")
             integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
             integrator.setBeepEnabled(false)
-            integrator.initiateScan()
+            integrator.initiateScan()*/
         }
         return view
+    }
+
+    private fun addScan(scan: Scan) {
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -10,7 +10,6 @@ import com.example.qrcodeapp.repository.UserRepository
 import com.example.qrcodeapp.model.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class UserViewModel(application: Application): AndroidViewModel(application) {
 

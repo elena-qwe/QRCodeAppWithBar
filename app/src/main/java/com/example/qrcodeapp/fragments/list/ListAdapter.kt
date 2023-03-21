@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qrcodeapp.R
+import com.example.qrcodeapp.model.Scan
 import com.example.qrcodeapp.model.User
 import kotlinx.android.synthetic.main.custom_row.view.*
 import kotlinx.android.synthetic.main.fragment_add.view.*
@@ -48,7 +49,6 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         this.userList = user
         notifyDataSetChanged()
     }
-
 
 
 
